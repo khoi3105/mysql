@@ -1,0 +1,52 @@
+insert into sanpham values 
+('SP001','Laptop Dell XPS', 2500, 15),
+('SP002','Smartphone iPhone 13', 3200, 20),
+('SP003','Dieu hoa Panasonic', 1200, 10),
+('SP004','Smartphone Samsung', 2000, 11)
+;
+
+insert into hoadon values 
+('HD001','2023-02-15', '123456'),
+('HD002','2023-02-16', '234567'),
+('HD003','2023-02-17', null),
+('HD004','2023-02-19', '345678')
+;
+
+insert into hoadonchitiet values 
+('SP001','HD001', 2,2500),
+('SP002','HD002', 1,3200),
+('SP003','HD003', 3,1200),
+('SP004','HD004', 1,1100)
+;
+
+#Yeu cau 3
+SELECT sanpham.TenSanPham, sanpham.GiaHienHanh
+FROM sanpham
+WHERE TenSanPham LIKE "%Dell%";
+
+yc 4
+SELECT *
+FROM hoadon
+WHERE sodienthoai IS NULL;
+
+yc5
+SELECT hoadonchitiet.MaHoaDon, sanpham.TenSanPham, hoadonchitiet.SoLuongMua, hoadonchitiet.GiaMua, (hoadonchitiet.SoLuongMua*hoadonchitiet.GiaMua) AS ThanhTien
+FROM hoadonchitiet
+INNER JOIN sanpham WHERE hoadonchitiet.MaSanPham = sanpham.MaSanPham;
+
+yc6
+SELECT sanpham.TenSanPham, hoadonchitiet.GiaMua AS GiaKhiBan, hoadon.NgayLap AS ThoiDiemBan
+FROM hoadon
+INNER JOIN hoadonchitiet ON hoadon.MaHoaDon = hoadonchitiet.MaHoaDon
+INNER JOIN sanpham ON hoadonchitiet.MaSanPham = sanpham.MaSanPham
+ORDER BY ngaylap;
+
+yc7
+UPDATE sanpham
+SET soluongton = 0
+WHERE tensanpham = 'Smartphone Samsung';
+
+yc8
+#khoa ngoai -> phai xoa toan bo record lien quan
+DELETE FROM sanpham
+WHERE soluongton = 0;
