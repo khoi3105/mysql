@@ -22,7 +22,7 @@ USE `mymusic`;
 -- Dumping structure for table mymusic.bannhac
 CREATE TABLE IF NOT EXISTS `bannhac` (
   `idBannhac` int NOT NULL AUTO_INCREMENT,
-  `tenBannhac` varchar(255) COLLATE utf8mb4_general_ci NOT NULL DEFAULT '',
+  `tenBannhac` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '',
   `idNhacsi` int NOT NULL DEFAULT (0),
   PRIMARY KEY (`idBannhac`),
   UNIQUE KEY `tenBannhac_idNhacsi` (`tenBannhac`,`idNhacsi`),
@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `banthuam` (
   CONSTRAINT `banthuam_ibfk_2` FOREIGN KEY (`idBannhac`) REFERENCES `bannhac` (`idBannhac`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table mymusic.banthuam: ~8 rows (approximately)
+-- Dumping data for table mymusic.banthuam: ~10 rows (approximately)
 DELETE FROM `banthuam`;
 INSERT INTO `banthuam` (`idBanthuam`, `idBannhac`, `idCasi`) VALUES
 	(1, 1, 5),
@@ -71,7 +71,7 @@ INSERT INTO `banthuam` (`idBanthuam`, `idBannhac`, `idCasi`) VALUES
 -- Dumping structure for table mymusic.casi
 CREATE TABLE IF NOT EXISTS `casi` (
   `idCasi` int NOT NULL AUTO_INCREMENT,
-  `tenCasi` varchar(255) COLLATE utf8mb4_general_ci NOT NULL DEFAULT '',
+  `tenCasi` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '',
   PRIMARY KEY (`idCasi`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -91,7 +91,7 @@ CREATE TABLE IF NOT EXISTS `nhacsi` (
   PRIMARY KEY (`idNhacsi`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table mymusic.nhacsi: ~4 rows (approximately)
+-- Dumping data for table mymusic.nhacsi: ~5 rows (approximately)
 DELETE FROM `nhacsi`;
 INSERT INTO `nhacsi` (`idNhacsi`, `tenNhacsi`) VALUES
 	(1, 'Đỗ Nhuận'),
